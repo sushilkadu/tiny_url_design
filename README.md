@@ -68,7 +68,7 @@ This can definitely be handled with more replicas. If we consider cloud architec
 I'd like to kubernetes autoscale approach to manage the scaling for me. This way I don't have to manage machines manually, I can specify the load threshold and decide the maximum pods that can be generated when there is peak load. Also, this will also be cost effective solution since number of pods will come down as the load decreases.
 Please see the image below.
 
-<img src="k8s_autoscale">
+<img src="k8s_autoscale.png">
 
 ## How do you make sure that your service never goes down? (No outage). You have to assume that your machines will die. How do you make sure your service is unaffected by those incidents (unless all of your machines die at once - Lets assume that never happens).
 
