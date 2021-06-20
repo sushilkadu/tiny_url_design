@@ -18,6 +18,8 @@ id | url | unique_key | custom_string
 - unique_key = Unique key generated against a specific URL.
 - custom_string = Optional field, provided by the user. If provided, it should be appended to the unique key.
 
+When it's time to create tiny url, we need to insert url and associated unique key. In later section, we will discuss how to generate this unique key.
+
 When someone requests http://<<domain_url_shortner>>/unique_key (or http://<<domain_url_shortner>>/unique_keyCustomString)
 Pick the last part of the URL and extract first 7 characters (considering fixed legth unique key). Make a query to DB such that these characters match unique_key 
 in database and get the corresponding actual URL and redirect to that url.
