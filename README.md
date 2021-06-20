@@ -71,5 +71,7 @@ Please see the image below.
 <img src="k8s_autoscale.png">
 
 ## How do you make sure that your service never goes down? (No outage). You have to assume that your machines will die. How do you make sure your service is unaffected by those incidents (unless all of your machines die at once - Lets assume that never happens).
+In my opinion, creating replicas is the only way to ensure that we can survive outage or any kind calamity. But I've to bet on cloud environment like EKS or GKS and using the proper replication policies we can achieve this.
+Even though I think, LBS is still going to a single point of failure. As discussed, I can employ zookeeper which can keep other load balancer as stand by to replace the machine which is going down.
 
 
