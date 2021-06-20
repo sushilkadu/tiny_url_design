@@ -55,14 +55,13 @@ This is smaller than the earlier 128-bit UUID but again size is relatively longe
 ### Relying on DB id
 Well, if returning url with id is acceptable then we can rely on DB to generate an auto-increment unique id and create url with it. Meaning, insert actual url in DB. This will return us an id from DB. Use this id to append to an url. Like this http://<some_domain>/12324.
 When we receive this url, we extract id and reach out to be get the corresponding url and redirect.
-One thing we need to see is can we make this id fixed length. If not then 'custom string' scenario will not be satisfied.
+For appending custom string, we can add a separator(#|&) after the id and append custom string after that.
 
 ## How will you ensure the system is very low latency?
 The algorithm mentioned above is indeed low latency because all we are doing is pefroming a lookup on unique string. We can index this column so that lookup becomes even faster. The overall operation does not do any heavylifting except making a query to DB. To improve on this, we can make use of in memory db like Redis which can store recently used unique string and it's correspoding urls. This will overal reduce the time for frequently accessed urls.
 
 ## What will happen if the machine storing the URL mapping dies? (Power outage / Hard Disk gone bad)
 This can definitely be handled with more replicas. If we consider cloud architecture then it becomes easy to manage number of machine handling load.
-
 
 ## How do you make sure your system is consistent? This is to say, if I have shortened a URL, given the shortened URL, my system should always return the original URL no matter when I call your system.
 I'd like to kubernetes autoscale approach to manage the scaling for me. This way I don't have to manage machines manually, I can specify the load threshold and decide the maximum pods that can be generated when there is peak load. Also, this will also be cost effective solution since number of pods will come down as the load decreases.
