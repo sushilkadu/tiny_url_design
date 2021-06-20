@@ -1,5 +1,7 @@
 # tiny_url_design
 
+**Note**: Please use this https://github.com/sushilkadu/tiny_url_design/edit/main/README.md for better reading experience.
+
 ## Problem statement
 Given a URL to shorten, it gives back a unique shortened URL
 Given a URL to shorten and a custom string, it gives back a shortened URL with the custom string as suffix (If its available).
