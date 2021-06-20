@@ -58,7 +58,7 @@ When we receive this url, we extract id and reach out to be get the correspondin
 One thing we need to see is can we make this id fixed length. If not then 'custom string' scenario will not be satisfied.
 
 ## How will you ensure the system is very low latency?
-The algorithm mentioned above is indeed low latency because all we are doing is pefroming a lookup on unique string. We can index this column so that lookup becomes even faster. The overall operation does not do any heavylifting.
+The algorithm mentioned above is indeed low latency because all we are doing is pefroming a lookup on unique string. We can index this column so that lookup becomes even faster. The overall operation does not do any heavylifting except making a query to DB. To improve on this, we can make use of in memory db like Redis which can store recently used unique string and it's correspoding urls. This will overal reduce the time for frequently accessed urls.
 
 ## What will happen if the machine storing the URL mapping dies? (Power outage / Hard Disk gone bad)
 This can definitely be handled with more replicas. If we consider cloud architecture then it becomes easy to manage number of machine handling load.
